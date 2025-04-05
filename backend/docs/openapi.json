@@ -1,0 +1,485 @@
+{
+    "openapi": "3.0.2",
+    "info": {
+        "title": "Localis Data API",
+        "description": "This is a simple Express API based on the supplied Localis data. It currently supports retrieving all data combine and also data in the 2 original formats - length of stay data and occupancy data",
+        "version": "1.0.0",
+        "termsOfService": "http://swagger.io/terms/",
+        "contact": {
+            "email": "j.hogan@qut.edu.au"
+        },
+        "license": {
+            "name": "Apache 2.0",
+            "url": "http://www.apache.org/licenses/LICENSE-2.0.html"
+        }
+    },
+    "servers": [
+        {
+            "url": "/"
+        }
+    ],
+    "tags": [
+        {
+            "name": "query",
+            "description": "API queries."
+        }
+    ],
+    "paths": {
+        "/api/combined_data": {
+            "get": {
+                "tags": [
+                    "query"
+                ],
+                "summary": "List all data combined filtered optionally by LGAName, start and/or end",
+                "description": "Full listing of all data combined from the database",
+                "operationId": "listAllData",
+                "parameters": [
+                    {
+                        "name": "LGAName",
+                        "in": "query",
+                        "description": "The LGA Name in question ie. Noosa, Whitsunday, Cairns, Gold Coast",
+                        "required": false,
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "start",
+                        "in": "query",
+                        "description": "Start date filter in the format yyyy-mm-dd",
+                        "required": false,
+                        "explode": true,
+                        "schema": {
+                            "type": "date",
+                            "default": ""
+                        }
+                    },
+                    {
+                        "name": "end",
+                        "in": "query",
+                        "description": "End date filter in the format yyyy-mm-dd",
+                        "required": false,
+                        "explode": true,
+                        "schema": {
+                            "type": "date",
+                            "default": ""
+                        }
+                    }
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "responses": {
+                    "200": {
+                        "description": "successful operation",
+                        "schema": {
+                            "type": "object",
+                            "properties": {
+                                "Error": {
+                                    "type": "string",
+                                    "enum": [
+                                        "true",
+                                        "false"
+                                    ]
+                                },
+                                "Message": {
+                                    "type": "string",
+                                    "enum": [
+                                        "Success",
+                                        "Failure"
+                                    ]
+                                },
+                                "combined_data": {
+                                    "type": "array",
+                                    "items": {
+                                        "type": "object",
+                                        "properties": {
+                                            "sample_date": {
+                                                "type": "date"
+                                            },
+                                            "lga_name": {
+                                                "type": "string"
+                                            },
+                                            "average_historical_occupancy": {
+                                                "type": "number"
+                                            },
+                                            "average_daily_rate": {
+                                                "type": "number"
+                                            },
+                                            "average_length_of_stay": {
+                                                "type": "number"
+                                            },
+                                            "average_booking_window": {
+                                                "type": "number"
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/api/combined_data/{LGAName}": {
+            "get": {
+                "tags": [
+                    "query"
+                ],
+                "summary": "List all data combined filtered by LGA Name (mandatory) and optionally start and/or end",
+                "description": "Listing of combined data filtered by LGA Name from the database",
+                "operationId": "listAllDataByLGA",
+                "parameters": [
+                    {
+                        "name": "LGAName",
+                        "in": "path",
+                        "description": "The LGA Name in question ie. Noosa, Whitsunday, Cairns, Gold Coast",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "start",
+                        "in": "query",
+                        "description": "Start date filter in the format yyyy-mm-dd",
+                        "required": false,
+                        "explode": true,
+                        "schema": {
+                            "type": "date",
+                            "default": ""
+                        }
+                    },
+                    {
+                        "name": "end",
+                        "in": "query",
+                        "description": "End date filter in the format yyyy-mm-dd",
+                        "required": false,
+                        "explode": true,
+                        "schema": {
+                            "type": "date",
+                            "default": ""
+                        }
+                    }
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "responses": {
+                    "200": {
+                        "description": "successful operation",
+                        "schema": {
+                            "type": "object",
+                            "properties": {
+                                "Error": {
+                                    "type": "string",
+                                    "enum": [
+                                        "true",
+                                        "false"
+                                    ]
+                                },
+                                "Message": {
+                                    "type": "string",
+                                    "enum": [
+                                        "Success",
+                                        "Failure"
+                                    ]
+                                },
+                                "combined_data": {
+                                    "type": "array",
+                                    "items": {
+                                        "type": "object",
+                                        "properties": {
+                                            "sample_date": {
+                                                "type": "date"
+                                            },
+                                            "lga_name": {
+                                                "type": "string"
+                                            },
+                                            "average_historical_occupancy": {
+                                                "type": "number"
+                                            },
+                                            "average_daily_rate": {
+                                                "type": "number"
+                                            },
+                                            "average_length_of_stay": {
+                                                "type": "number"
+                                            },
+                                            "average_booking_window": {
+                                                "type": "number"
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/api/length_of_stay": {
+            "get": {
+                "tags": [
+                    "query"
+                ],
+                "summary": "List all length of stay data",
+                "description": "Full listing of length of stay data from the database",
+                "operationId": "listAllLengthOfStay",
+                "produces": [
+                    "application/json"
+                ],
+                "responses": {
+                    "200": {
+                        "description": "successful operation",
+                        "schema": {
+                            "type": "object",
+                            "properties": {
+                                "Error": {
+                                    "type": "string",
+                                    "enum": [
+                                        "true",
+                                        "false"
+                                    ]
+                                },
+                                "Message": {
+                                    "type": "string",
+                                    "enum": [
+                                        "Success",
+                                        "Failure"
+                                    ]
+                                },
+                                "combined_data": {
+                                    "type": "array",
+                                    "items": {
+                                        "type": "object",
+                                        "properties": {
+                                            "sample_date": {
+                                                "type": "date"
+                                            },
+                                            "lga_name": {
+                                                "type": "string"
+                                            },
+                                            "average_length_of_stay": {
+                                                "type": "number"
+                                            },
+                                            "average_booking_window": {
+                                                "type": "number"
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/api/occupancy_daily_rate": {
+            "get": {
+                "tags": [
+                    "query"
+                ],
+                "summary": "List all occupancy data",
+                "description": "Full listing of all occupancy data from the database",
+                "operationId": "listAllOccupancyData",
+                "produces": [
+                    "application/json"
+                ],
+                "responses": {
+                    "200": {
+                        "description": "successful operation",
+                        "schema": {
+                            "type": "object",
+                            "properties": {
+                                "Error": {
+                                    "type": "string",
+                                    "enum": [
+                                        "true",
+                                        "false"
+                                    ]
+                                },
+                                "Message": {
+                                    "type": "string",
+                                    "enum": [
+                                        "Success",
+                                        "Failure"
+                                    ]
+                                },
+                                "combined_data": {
+                                    "type": "array",
+                                    "items": {
+                                        "type": "object",
+                                        "properties": {
+                                            "sample_date": {
+                                                "type": "date"
+                                            },
+                                            "lga_name": {
+                                                "type": "string"
+                                            },
+                                            "average_historical_occupancy": {
+                                                "type": "number"
+                                            },
+                                            "average_daily_rate": {
+                                                "type": "number"
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/users/login": {
+            "post": {
+                "tags": [
+                    "users"
+                ],
+                "summary": "Logs user into the system",
+                "description": "",
+                "operationId": "loginUser",
+                "requestBody": {
+                    "required": true,
+                    "content": {
+                        "application/x-www-form-urlencoded": {
+                            "schema": {
+                                "type": "object",
+                                "properties": {
+                                    "email": {
+                                        "type": "string",
+                                        "description": "User's email address",
+                                        "example": "j.doe@example.com"
+                                    },
+                                    "password": {
+                                        "type": "string",
+                                        "description": "User's password",
+                                        "example": "123password"
+                                    }
+                                },
+                                "required": [
+                                    "email",
+                                    "password"
+                                ]
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "successful operation",
+                        "headers": {
+                            "X-Rate-Limit": {
+                                "description": "calls per hour allowed by the user",
+                                "schema": {
+                                    "type": "integer",
+                                    "format": "int32"
+                                }
+                            },
+                            "X-Expires-After": {
+                                "description": "date in UTC when token expires",
+                                "schema": {
+                                    "type": "string",
+                                    "format": "date-time"
+                                }
+                            }
+                        },
+                        "content": {
+                            "application/xml": {
+                                "schema": {
+                                    "type": "string"
+                                }
+                            },
+                            "application/json": {
+                                "schema": {
+                                    "type": "string"
+                                }
+                            }
+                        }
+                    },
+                    "400": {
+                        "description": "Invalid username/password supplied"
+                    }
+                }
+            }
+        },
+        "/users/register": {
+            "post": {
+                "tags": [
+                    "users"
+                ],
+                "summary": "User registers to become a user of the system",
+                "description": "",
+                "operationId": "registerUser",
+                "requestBody": {
+                    "required": true,
+                    "content": {
+                        "application/x-www-form-urlencoded": {
+                            "schema": {
+                                "type": "object",
+                                "properties": {
+                                    "email": {
+                                        "type": "string",
+                                        "description": "User's email address",
+                                        "example": "j.doe@example.com"
+                                    },
+                                    "password": {
+                                        "type": "string",
+                                        "description": "User's password",
+                                        "example": "123password"
+                                    },
+                                    "LGAName": {
+                                        "type": "string",
+                                        "description": "Local Government Area of the user",
+                                        "example": "Noosa"
+                                    }
+                                },
+                                "required": [
+                                    "email",
+				    "password",
+                                    "LGAName"
+                                ]
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "successful operation",
+                        "headers": {
+                            "X-Rate-Limit": {
+                                "description": "calls per hour allowed by the user",
+                                "schema": {
+                                    "type": "integer",
+                                    "format": "int32"
+                                }
+                            },
+                            "X-Expires-After": {
+                                "description": "date in UTC when token expires",
+                                "schema": {
+                                    "type": "string",
+                                    "format": "date-time"
+                                }
+                            }
+                        },
+                        "content": {
+                            "application/xml": {
+                                "schema": {
+                                    "type": "string"
+                                }
+                            },
+                            "application/json": {
+                                "schema": {
+                                    "type": "string"
+                                }
+                            }
+                        }
+                    },
+                    "400": {
+                        "description": "Invalid username/password supplied"
+                    }
+                }
+            }
+        }
+    }
+}

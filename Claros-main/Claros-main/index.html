@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+        <meta name="description" content="" />
+        <meta name="author" content="" />
+        <title>Research project</title>
+        <link rel="icon" type="image/x-icon" href="assets/web-logo.png" />
+        <!-- Core theme CSS (includes Bootstrap)-->
+        <link href="css/styles.css" rel="stylesheet" />
+        <!-- Q-sort scripts -->
+        <script src="js/q-sort.js"></script>
+        <!-- jQuery -->
+        <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-csv/1.0.11/jquery.csv.min.js"></script>
+        <!-- Bootstrap core JS-->
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"></script>
+        <!-- Core theme JS-->
+        <script src="js/scripts.js"></script>
+
+
+    </head>
+    <body id="page-top">
+        <!-- Navigation-->
+        <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top" id="mainNav">
+            <div class="container px-4">
+                <a class="navbar-brand" href="#page-top">Research project title</a>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation"><span class="navbar-toggler-icon"></span></button>
+                <div class="collapse navbar-collapse" id="navbarResponsive">
+                    <ul class="navbar-nav ms-auto">
+                        <li class="nav-item"><a class="nav-link" href="#intro">About</a></li>
+                        <li class="nav-item"><a class="nav-link" href="#result">Result</a></li>
+                        <li class="nav-item"><a class="nav-link" href="#ranking">Ranking</a></li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+
+        <!-- Header section-->
+        <header class="bg-primary bg-gradient text-white">
+            <div class="container px-4 text-center">
+                <h1 class="fw-bolder">Welcome to the research project</h1>
+                <p class="lead">A short project introduction</p>
+                <a class="btn btn-lg btn-light" href="#ranking">Start ranking</a>
+            </div>
+        </header>
+
+        <!-- About section-->
+        <section id="intro">
+            <div class="container px-4">
+                <div class="row gx-4 justify-content-center">
+                    <div class="col-lg-8">
+                        <h2>About this project</h2>
+                        <p class="lead">Detailed project introduction (e.g., research background and approach).</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Results section-->
+        <section class="bg-light" id="result">
+            <div class="container px-4">
+                <div class="row gx-4 justify-content-center">
+                    <div class="col-lg-8">
+                        <h2>Result of the last round</h2>
+                        <p class="lead">The summary result of previous sorting round is shown in the below figure.</p>
+                        <img src="data/Result.png" class="img-fluid" alt="Responsive image" style="margin: auto;display: block;">
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Ranking section-->
+        <section id="ranking">
+            <div class="container px-4">
+                <div class="row gx-4 justify-content-center">
+                    <div class="col-lg-8" id="form section">
+                        <h2>Ranking</h2>
+                        <!-- Ranking introduction -->
+                        <h4>Introduction</h4>
+                        <p class="lead">This sorting task requires you to <b>distribute nine scores</b> (-2, -1, -1, 0, 0, 0, +1, +1, and +2) across <b>nine statements</b>, in a <b>bell curve.</b></p>
+                        <ul style="margin: 20px;">
+                            <li class="lead"><b>Only one statement</b> can receive a <b>+2</b> and <b>only one statement</b> can receive a <b>-2</b>.</li>
+                            <li class="lead"><b>Two statements</b> receive <b>-2</b> and <b>+2</b> scores respectively. </li>
+                            <li class="lead"><b>Three statements</b> must receive a neutral score of <b>0</b>. </li>
+                        </ul>
+
+                        <p class="lead">Once you complete your sort, please click on the <b>validate</b> button to validate the result.</p>
+                        <ul style="margin: 20px;">
+                            <li class="lead">If the result is <b>valid</b>, a <b>submit</b> button will appear. Click on it will submit your sort result.</li>
+                            <li class="lead">If the result is <b>invalid</b>, please go back to allocate correct numbers of statements to each score.</li>
+                        </ul>
+
+                        <p class="lead">Click on the <b>reset</b> button will reset the ranking table.</p>
+
+                        <!-- Ranking table -->
+                        <div name="ranking-div">
+                        <h4>Ranking table</h4>
+                        <div class="table-responsive" id="testing">
+                            <form id="rankForm">
+                                <div class="button-container" style="float: right; margin-bottom: 10px;">
+                                    <button class="custom-button" name="reset" style="background-color: rgb(159, 187, 87);">Reset</button>
+                                </div>
+                                <table class="table table-bordered" style="width: 100%;">
+                                    <tbody id="tableBody">
+                                    </tbody>
+                                </table>
+                                <div class="button-container" id="bottom-buttons" style="justify-content: center;">
+                                    <button class="custom-button" name="update">Validate</button>
+                                </div>
+                            </form>                
+                        </div>
+                    </div>    
+                </div>
+            </div>
+        </section>
+        <!-- Footer-->
+        <footer class="py-5 bg-dark">
+            <div class="container px-4"><p class="m-0 text-center text-white">Copyright &copy; Research project 2024</p></div>
+        </footer>
+    </body>
+</html>

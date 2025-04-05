@@ -1,0 +1,20 @@
+Number: Short: Long
+1:Environmental Regulations: Increased pressure to meet environmental standards, especially the International Maritime Organization (IMO) regulations for reduced sulfur emissions.
+2:Decarbonization: The need to shift towards low-carbon and zero-carbon fuels, with the push to reduce greenhouse gas (GHG) emissions from shipping.
+3:Piracy and Maritime Security: Rising incidents of piracy, especially in regions like the Gulf of Guinea and the Straits of Malacca.
+4:Digital Transformation: Integration of digital technologies like the Internet of Things (IoT), Artificial Intelligence (AI), and automation into shipping operations.
+5:Cybersecurity Threats: Protecting ships and port facilities from increasing cyber threats.
+6:Supply Chain Disruptions: Addressing disruptions caused by global events like the COVID-19 pandemic and the Suez Canal blockage.
+7:Crew Welfare: Issues like crew changes, mental health, and extended contracts due to the pandemic and related restrictions.
+8:Aging Infrastructure: The need to upgrade and maintain ports, canals, and other maritime facilities.
+9:Trade Wars and Geopolitical Tensions: Impact of ongoing trade disputes and geopolitical tensions on global shipping routes and trade flows.
+10:Overcapacity: Balancing supply with demand, especially in the container shipping segment.
+11:Safety Regulations: Adhering to updated safety standards and addressing the rise in ship accidents.
+12:Bunker Fuel Prices: Volatility in the price of bunker fuels and its impact on operational costs.
+13:Marine Biodiversity: Addressing the impact of shipping on marine ecosystems and ensuring biodiversity conservation.
+14:Training and Skills Development: Adapting to new technologies and ensuring the workforce is trained for modern maritime challenges.
+15:Financial Challenges: Access to finance, insurance premiums, and coping with the economic downturns that affect global trade.
+16:Alternative Propulsion: Researching and adopting alternative propulsion methods, such as wind-assisted or battery-operated systems, to meet sustainability goals.
+17:New ship investments: Which fuel or type of propulsion to choose when ordering a new ship.
+18:Port decarbonization: Coordinating major port strategies for decarbonizing shipping
+19:Shipyard availability: Constraints on retrofits and new builds to meet decarbonization targets.
